@@ -3,34 +3,28 @@ import background3 from "../imgs/bg5.jpg";
 import planebg from "../imgs/plane-bg.jpg";
 import plane from "../imgs/plane.png";
 import Modal from 'react-modal';
+import Slider from 'react-input-slider'
+
 
 
 function PageFour() {
+  const ref = useRef(null);
+  const [percent, setPercent] = useState({x: 0, y: 0});
+
+
     const [altitude, setAltitude] = useState(0);
     const [pressure, setPressure] = useState(0);
 
-    /* scroll to bottom */
-    const endOfPlane = useRef(null)
-    const scrollToBottom = () => {
-        endOfPlane.current?.scrollIntoView({ behavior: "smooth" })
-    }
+      useEffect(() => {
+        ref.current?.scrollTo(0, ref.current?.scrollHeight*(1-(percent.x/100)))
+        setAltitude(50000*((percent.x/100)))
+      }, [percent])
 
-    /* get image height */
-    const [imageHeight, setImageHeight] = useState(0);
-    const onImgLoad = ({ target: img }) => {
-        const { offsetHeight, offsetWidth } = img;
-        setImageHeight(offsetHeight);
-        scrollToBottom();
-      };
+      useEffect(() => {
+        ref.current?.scrollTo(0, ref.current?.scrollHeight);
+        console.log(ref.current?.scrollHeight);
+      }, [ref.current?.scrollHeight])
 
-
-    /* current scroll */
-    const onScroll = (e) => {
-      const currentScrollY = e.target.scrollTop;
-      console.log(((imageHeight-currentScrollY)/imageHeight) +0.08268551236749117);
-      const altitude = (((imageHeight-currentScrollY)/imageHeight) +0.08268551236749117)*50000;
-      setAltitude(altitude);
-    };
 
     /* set preasure */
     useEffect(() => {
@@ -114,12 +108,14 @@ function PageFour() {
             <h2 className='lg:text-4xl md:text-xl font-bold'>Interactive Application</h2>
             <p className='pt-4'>Let's now directly apply this to avation. Below is a simulator where you can adjust the alittiude of the plane and view the corresponding preasure. Use the scroll bar or middle mouse to adjust the planes altitude.</p>
             <div className='p-8'></div>
-            <div className='pt-25 p-10 max-h-96 overflow-scroll relative ' onScroll={onScroll} >
+            <div ref={ref} className='pt-25 p-10 max-h-96 overflow-hidden relative ' >
                 <img src={plane} className='mx-auto inset-x-0 fixed' alt='plnae' width={500} style={{objectFit: 'contain'}}/>
                 <div className='bg-white left-24 rounded-lg p-2 drop-shadow-xl fixed'>{Math.round(altitude*100)} m</div>
                 <div className='bg-white left-60 rounded-lg p-2 drop-shadow-xl fixed'>{Math.round(pressure*1000*100)} Pa</div>
-                <img src={planebg} onLoad={onImgLoad} alt='strat' style={{objectFit: 'none'}}/>
-                <div ref={endOfPlane} />
+                <img src={planebg} alt='strat' />
+            </div>
+            <div className='pt-2 w-full'>
+            Alltitude (0 m) &nbsp;&nbsp;<Slider axis="x" x={percent.x} xmin={0} xmax={100} onChange={setPercent} />&nbsp;&nbsp; Alltitude (50,000 m)
             </div>
             <p className='pt-4'>The formulas used to dervive the pressure are from <a href="https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html">NASA's website. Click here to view. </a ><a onClick={openModal}>Click here to view other sources.</a></p>
 
