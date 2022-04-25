@@ -106,7 +106,7 @@ function PageFour() {
             <div className='bg-white rounded-lg p-10 drop-shadow-xl max-w-6xl'>
 
             <h2 className='lg:text-4xl md:text-xl font-bold'>Interactive Application</h2>
-            <p className='pt-4'>Let's now directly apply this to avation. Below is a simulator where you can adjust the alittiude of the plane and view the corresponding preasure. Use the scroll bar or middle mouse to adjust the planes altitude.</p>
+            <p className='pt-4'>Let's now directly apply this to aviation. Below is a simulator where you can adjust the altitude of a plane and view the corresponding air pressure. Use the selector below to set the plane's altitude.</p>
             <div className='p-8'></div>
             <div ref={ref} className='pt-25 p-10 max-h-96 overflow-hidden relative ' >
                 <img src={plane} className='mx-auto inset-x-0 fixed' alt='plnae' width={500} style={{objectFit: 'contain'}}/>

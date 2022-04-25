@@ -22,13 +22,14 @@ function PageTwo() {
             <div className='bg-white rounded-lg p-10 drop-shadow-xl'>
 
             <h2 className='lg:text-4xl md:text-xl font-bold'>Model 2</h2>
-            <p className='pt-4'>We can also model this phemonon using the ideal gas law. We can solve the ideal gas law for preasure by dividing both sides by volume.</p>
-            <p className='pt-4'>Now we can hold volume and the number of moles constant. This allows us to change tempature and see its effect on preasure.</p>
+            <p className='pt-4'>We can also model the air preassure using the ideal gas law. We can solve the ideal gas law for pressure by dividing both sides by volume.</p>
+            <p className='pt-4'>If we hold volume and the number of moles constant, it allows us to change temperature and see the effect on pressure.</p>
             <div className='pt-2 w-full'>
-              Low Tempature (-51&#xb0;C) &nbsp;&nbsp;<Slider axis="x" x={temp.x} xmin={-51.1111} xmax={56.722222} onChange={setTemp} />&nbsp;&nbsp; High Tempature (56&#xb0;C)
+              Low Temperature (-51&#xb0;C) &nbsp;&nbsp;<Slider axis="x" x={temp.x} xmin={-51.1111} xmax={56.722222} onChange={setTemp} />&nbsp;&nbsp; High Temperature (56&#xb0;C)
             </div>
-            <p className='pt-4'>The low tempature repersents the lowest tempature which planes fly in the stratsohpere. The high tempature repersents the highest tempature which is possible on earth.</p>
-            <p className='pt-4'>Notice that as tempature increase so does preassure. It is also true that as tempature decreases so does preasure.</p>
+            <p className='pt-4'>The low temperature represents the lowest temperature at which planes fly in the stratosphere. The high temperature represents the highest temperature that is possible on Earth.
+</p>
+            <p className='pt-4'>Notice that as temperature increases, so does air pressure. Conversely, as temperature decreases, so does air pressure.</p>
 
             </div>
             </div>

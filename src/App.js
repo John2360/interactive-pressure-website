@@ -14,7 +14,7 @@ function App() {
           <h1 className="lg:text-8xl md:text-6xl font-bold text-black">
             Pressure
           </h1>
-          <h3 className="lg:text-4xl md:text-xl">The physics behind atmospheric preassure and its interactions with airplanes by John Finberg</h3>
+          <h3 className="lg:text-4xl md:text-xl">The physics behind atmospheric preassure and its interactions with airplanes<br/><br/><span className="text-3xl">by John Finberg</span></h3>
         </div>
       </div>
       <PageOne />
